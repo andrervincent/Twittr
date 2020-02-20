@@ -17,11 +17,14 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         loadTweets()
         
+        
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetTableViewCell
         let user = tweetArray[indexPath.row]["user"] as! NSDictionary
         
+        // populate tweet, username, and profile picture of the cell
+    
         cell.userNameLabel.text = user["name"] as! String
         cell.tweetContentLabel.text = tweetArray[indexPath.row]["text"] as! String
         
@@ -36,11 +39,9 @@ class HomeTableViewController: UITableViewController {
     
     func loadTweets() {
         let myUrl = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let myParams = [
-            "count": 10,
-        ]
+        let myParams = ["count": 10]
         
-        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success: {(tweets: [NSDictionary]) in
+        TwitterAPICaller.client?.getDictionariesRequest(url: myUrl, parameters: myParams, success: {  (tweets: [NSDictionary]) in
             // Clear remaining/lingering tweets before populating array again
             self.tweetArray.removeAll()
             
@@ -49,7 +50,7 @@ class HomeTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         }, failure: { (Error) in
-                print("You tried it hoe! That shit ain't work!")
+                print("Sorry, that didn't work.")
             })
         
     }
