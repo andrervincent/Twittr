@@ -32,9 +32,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onLoginButton:" destination="Hoe-RI-NMJ" eventType="touchUpInside" id="QP7-T1-TlF"/>
-                                    <segue destination="VdD-YT-AfH" kind="popoverPresentation" identifier="loginToHome" popoverAnchorView="eTL-EH-E70" id="f6o-9E-4TJ">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="TwitterLogoBlue" translatesAutoresizingMaskIntoConstraints="NO" id="hkl-EK-FMA">
@@ -52,6 +49,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jE2-Bk-CmO"/>
                     </view>
+                    <connections>
+                        <segue destination="VdD-YT-AfH" kind="presentation" identifier="loginToHome" id="EKn-NT-sRy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDf-AN-ycn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
